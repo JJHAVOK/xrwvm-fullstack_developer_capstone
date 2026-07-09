@@ -1,23 +1,24 @@
 version: '3.9'
 
 services:
-  # Mongodb service
   mongo_db:
     container_name: db_container
     image: mongo:latest
     ports:
-      - 27017:27017
+      - "27017:27017"
     restart: always
     volumes:
       - mongo_data:/data/db
 
-  # Node api service
   api:
     image: nodeapp
+    build: .  # Ensure this is here so it rebuilds your code changes
     ports:
-      - 3030:3030
+      - "3030:3030"
     depends_on: 
       - mongo_db
+    environment:
+      - MONGO_HOST=mongo_db  # Pass the hostname to your app
 
 volumes:
   mongo_data: {}
