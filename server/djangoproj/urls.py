@@ -16,6 +16,6 @@ urlpatterns = [
     
     # Static files
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + [
-    # Catch-all last
-    re_path(r'^.*$', TemplateView.as_view(template_name="index.html")),
+    # Catch-all ONLY for paths that do NOT start with admin/
+    re_path(r'^(?!admin|djangoapp).*$', TemplateView.as_view(template_name="index.html")),
 ]
