@@ -1,13 +1,12 @@
 import LoginPanel from "./components/Login/Login";
-import { Routes, Route } from "react-router-dom";
-// Import your other components here
-import Home from "./components/Home/Home";
 import Register from "./components/Register/Register";
+import Dealers from "./components/Dealers/Dealers";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Dealers />} /> {/* Use Dealers as the Home route */}
       <Route path="/login" element={<LoginPanel />} />
       <Route path="/register" element={<Register />} />
     </Routes>
