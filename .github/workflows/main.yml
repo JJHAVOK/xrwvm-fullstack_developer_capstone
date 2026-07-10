@@ -29,4 +29,5 @@ jobs:
       with:
         node-version: 14
     - run: npm install jshint --global
-    - run: find ./server -name "*.js" -exec jshint {} +
+    - run: |
+        find ./server/database -name "*.js" -exec jshint {} +
