@@ -52,8 +52,8 @@ def initiate():
 
     for data in car_model_data:
         CarModel.objects.create(
-    car_make=car_make,
-    name=name,
-    type=type,
-    year=year
-)
+            car_make=car_make,
+            name=name,
+            type=type,
+            year=year
+        )
