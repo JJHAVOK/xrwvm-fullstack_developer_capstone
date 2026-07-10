@@ -145,9 +145,4 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [  # noqa: E501
-    os.path.join(
-        BASE_DIR,
-        'frontend/build/static'
-    ),
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/build/static')]  # noqa: E501
