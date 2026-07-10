@@ -32,8 +32,8 @@ jobs:
     - name: Run Linter
       run: |
         pwd
-        # This command finds all Python files recursively and runs flake8 on them
-        find . -name "*.py" -exec flake8 {} +
+        # Run flake8 while excluding common auto-generated folders
+        flake8 . --exclude=migrations,__pycache__,venv --max-line-length=79
         echo "Linted all the python files successfully"
 
   lint_js:
