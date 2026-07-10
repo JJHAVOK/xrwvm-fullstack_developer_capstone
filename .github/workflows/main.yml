@@ -1,0 +1,33 @@
+name: 'Lint Code'
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  lint_python:
+    name: Lint Python Files
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.12
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8
+
+    - name: Run Linter
+      run: |
+        # Only lint the server directory, exclude venv and migrations, 
+        # and enforce a 79-character limit explicitly.
+        flake8 ./server --exclude=venv,migrations --max-line-length=79
+        echo "Linted server python files successfully"
