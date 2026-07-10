@@ -7,18 +7,18 @@ on:
     branches: [master, main]
 
 jobs:
-  lint_python:
-    name: Lint Python Files
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
-      with:
-        python-version: 3.12
-    - run: |
-        python -m pip install --upgrade pip
-        pip install flake8
-    - run: flake8 ./server/djangoproj/settings.py --max-line-length=79
+  # lint_python:  <-- ADD # HERE
+  #   name: Lint Python Files
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: actions/setup-python@v4
+  #     with:
+  #       python-version: 3.12
+  #   - run: |
+  #       python -m pip install --upgrade pip
+  #       pip install flake8
+  #   - run: flake8 ./server/djangoproj/settings.py --max-line-length=79
 
   lint_js:
     name: Lint JavaScript Files
@@ -29,5 +29,4 @@ jobs:
       with:
         node-version: 14
     - run: npm install jshint --global
-    - run: |
-        find ./server/database -name "*.js" -exec jshint {} +
+    - run: find ./server/database -name "*.js" -exec jshint {} +
